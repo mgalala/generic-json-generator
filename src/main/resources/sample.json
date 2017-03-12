@@ -1,0 +1,50 @@
+{
+  "attributes" : [
+    {
+      "dataType" : "ARRAY",
+      "name" : "feedbacks",
+      "mappedFrom" : {
+        "attribute" : {
+          "name" : "feedbacks"
+        }
+      },
+      "properties" : [
+        {
+          "name" : "v1",
+          "dataType" : "INTEGER",
+          "mappedFrom" : {
+            "attribute" : {
+              "uuid" : "nps-score-field-uuid"
+            }
+          }
+        },
+        {
+          "name" : "v1_1",
+          "dataType" : "BIGDECIMAL",
+          "mappedFrom" : {
+            "calculation" : {
+              "operation" : "division",
+              "dividend" : {
+                "attribute" : {
+                  "uuid" : "nps-score-field-uuid"
+                }
+              },
+              "divisor" : {
+                "value" : 2
+              }
+            }
+          }
+        },
+        {
+          "name" : "v2",
+          "dataType" : "TEXT",
+          "mappedFrom" : {
+            "attribute" : {
+              "uuid" : "comment-field-uuid"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
