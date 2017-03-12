@@ -7,6 +7,8 @@ import java.util.Collection;
 
 import org.mgalala.builder.dto.Property;
 
+import com.fasterxml.jackson.databind.node.ArrayNode;
+
 /**
  * @author mgalala
  * @param <E>
@@ -14,6 +16,6 @@ import org.mgalala.builder.dto.Property;
  * @param <E>
  *
  */
-public interface CollectionBuilder<T extends Collection<E>, E> extends IJsonBuilder<Property, T> {
+public interface CollectionBuilder<T extends Collection<E>, E> extends IJsonBuilder<Property, ArrayNode, T> {
 
 }

@@ -5,13 +5,12 @@ package org.mgalala.builder;
 
 import org.mgalala.builder.dto.Property;
 
+import com.fasterxml.jackson.databind.node.ObjectNode;
+
 /**
- * @author mgalala <br/>
- *         iterate first on all feedbacks </br>
- *         for each iteration iterate over properties <br/>
- *         and pass the feedback and property and previously generated node to
- *         this class
+ * @author mgalala
+ * @param <J>
  */
-public abstract class FieldBuilder<E> implements IJsonBuilder<Property, E> {
+public abstract class FieldBuilder<E> implements IJsonBuilder<Property, ObjectNode, E> {
 
 }

@@ -12,7 +12,7 @@ import org.mgalala.builder.extractor.FeedbackAttributePropertyValueExtractor;
 import org.mgalala.builder.extractor.FeedbackCalculatorPropertyValueExtractor;
 import org.mgalala.builder.extractor.IPropertyValueExtractor;
 
-import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 /**
@@ -24,14 +24,20 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
  */
 public class FeedbackFieldBuilder extends FieldBuilder<FeedbackEntity> {
 
-	public JsonNode build(Property property, ObjectNode node, FeedbackEntity entity) {
-		if (null == property || null == node || null == entity) {
+	private ObjectMapper mapper = new ObjectMapper();
+
+	public ObjectNode build(Property property, ObjectNode node, FeedbackEntity entity) {
+		if (null == property || null == entity) {
 			return null;
 		}
+		if (null == node) {
+			node = mapper.createObjectNode();
+		}
+
 		ExtractedValue extractedValue = null;
 
 		if (property.getMappedFrom().getAttribute() != null) {
-			// standard attribute mapping
+			// standard property mapping
 			IPropertyValueExtractor<Attribute, FeedbackEntity> extractor = new FeedbackAttributePropertyValueExtractor();
 			extractedValue = extractor.extract(property.getMappedFrom().getAttribute(), entity);
 		} else if (property.getMappedFrom().getCalculation() != null) {
